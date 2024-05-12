@@ -23,43 +23,120 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
 ## CODING AND OUTPUT
-![Screenshot 2024-03-13 185949](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/c1ae91a7-b57d-4c7f-ab87-41a6f6cca73e)
-![Screenshot 2024-03-13 190023](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/ef99602a-5d21-49d3-858d-72c7c4a37428)
-![Screenshot 2024-03-13 190055](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/40942a94-e9ef-43e5-8ef5-d06fe8c9d676)
-![Screenshot 2024-03-13 190127](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/ed0476c8-86e6-4c79-839d-7207217f9895)
-![Screenshot 2024-03-13 190201](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/65619317-e999-4e89-993a-e4a3bc74f01f)
-![Screenshot 2024-03-13 190234](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/7154e2c9-5453-4a20-93cb-1ecb8e04098a)
-![Screenshot 2024-03-13 190258](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/652a6196-00c3-44a0-9453-ed728dc3175a)
-![Screenshot 2024-03-13 190332](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/73f45a9a-74b2-4918-9f8a-91723570854c)
-![Screenshot 2024-03-13 190354](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/310789b1-716e-4c5e-9bdc-cfeaed93bfd5)
-![Screenshot 2024-03-13 190419](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/db2d0543-7721-454c-999f-fda985b06dc5)
-![Screenshot 2024-03-13 190452](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/718ec81d-8437-4130-8bc1-a366714de749)
-![Screenshot 2024-03-13 190515](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/93401746-ac11-4028-b811-5607d8c17b4b)
-![Screenshot 2024-03-13 190546](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/3e0c1ad5-6925-4048-8265-30862e9fd2da)
-![Screenshot 2024-03-13 190611](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/9c888d89-24c8-4d7b-ab88-55905528bea8)
-![Screenshot 2024-03-13 190637](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/b0910a13-54b6-4aba-a5c1-923ce5bdb20b)
-![Screenshot 2024-03-13 190726](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/523fa9cc-bb75-4ac9-a2b8-71f7be29cddb)
-![Screenshot 2024-03-13 191021](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/cf1faf2b-28c6-4869-9a8b-ee6b93350fe1)
-![Screenshot 2024-03-13 191052](https://github.com/YuvarajVB/EXNO2DS/assets/151488375/fc3e1ea1-2093-4fe9-9dd4-57040bf5ebca)
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("/content/titanic_dataset.csv")
+df
+```
+![lab02](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/ad910c75-3f6b-455d-be51-ac5cc92b7482)
+
+```
+df.info()
+```
+![lab02(1)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/ffdc7bf5-442d-46d4-bb90-582ef03adf8b)
+
+```
+df.shape
+```
+![lab02(2)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/67cef4ed-e81c-48f4-a2b7-9774461c2409)
+
+```
+import pandas as pd
+df=pd.read_csv("/content/titanic_dataset.csv")
+df.set_index("PassengerId",inplace=True)
+print(df.set_index)
+```
+![lab02(3)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/34f3bcbf-a69b-47a9-9cc7-3b8fc59df9f9)
+
+```
+df.describe()
+```
+![lab02(4)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/8c940ad5-ebd1-4594-be50-1b8a4de34e36)
+
+```
+df.nunique()
+```
+![lab02(5)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/f88906c6-9297-492f-9503-3f61d38ac697)
+
+```
+df["Survived"].value_counts()
+```
+![lab02(7)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/00a55ce8-85c3-4cec-bd0f-be69931bdca1)
+
+```
+per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
+per
+```
+![lab02(8)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/90af63f2-93ee-449b-bc9f-a1506e776d20)
+
+```
+sns.countplot(data=df,x="Survived")
+```
+
+![lab02(9)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/823090a7-7559-45ff-a7e1-a41ecce49ae0)
+
+```
+df
+```
+![lab02(10)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/9510f440-d240-4cb1-84c5-533ae425e724)
+
+```
+df.Pclass.unique()
+```
+
+![lab02(11)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/14faf5e5-c191-4eaa-8549-2699d83198c0)
+
+```
+df.rename(columns={'sex':'Gender'},inplace=True)
+df
+```
+![lab02(12)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/52c3b934-6a43-4f63-9252-d7d0d9bb5e1d)
+
+```
+import seaborn as sns
+df=pd.read_csv("/content/titanic_dataset.csv")
+sns.catplot(x="Sex",col='Survived',kind="count",data=df,height=5, aspect=.7)
+```
+![lab02(13)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/76d50ddb-0064-4867-af85-62136eb56edf)
+
+```
+sns.catplot(x='Survived',hue='Sex',data=df,kind='count')
+```
+![lab02(14)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/3296021c-6de4-4ed8-9a04-4937be5ce50c)
+
+```
+df.boxplot(column='Age',by="Survived")
+```
+![lab02(15)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/e10fe226-cce7-4eaf-9b5f-dbac11d20928)
+
+```
+sns.scatterplot(x=df['Age'],y=df["Fare"])
+```
+![lab02(16)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/98e64c92-8ff9-4276-8de1-6c53b369ab92)
+```
+import matplotlib.pyplot as plt
+fig,ax1=plt.subplots(figsize=(8,5))
+pt=sns.boxplot(ax=ax1,x='Pclass',y='Age',hue='Sex',data=df)
+```
+![lab02(17)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/154a4ef6-44c9-4451-8f71-c6c72957a48e)
+
+```
+sns.catplot(data=df,col='Survived',x='Sex',hue='Pclass',kind='count')
+```
+![lab02(18)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/34e25f68-d33b-441d-a781-73bf9fe64e80)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+import seaborn as sns
+corr=df.corr()
+sns.heatmap(corr,annot=True)
+```
+![lab02(19)](https://github.com/AkshayalakshmiVS/EXNO2DS/assets/128115963/26c8e6cf-a84f-46ea-870f-f5e8a43924af)
+        <<INCLUDE YOUR RESULT HERE>>
 
 # RESULT
               Thus the data analysis has been implemented succesfully.
